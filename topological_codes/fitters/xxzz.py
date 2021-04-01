@@ -42,6 +42,12 @@ class XXZZGraphDecoderBase(TopologicalGraphDecoder[TQubit]):
         super().__init__(code_params)
         if "d" not in self.code_params or "T" not in self.code_params:
             raise ValueError("Please include d and T in code_params.")
+        if (
+            "p" not in self.code_params or
+            "eta" not in self.code_params or
+            "bias" not in self.code_params
+        ):
+            raise ValueError("Please specify error model for XZZX decoder.")
 
         self.virtual = self._specify_virtual()
         self.S["X"] = nx.Graph()

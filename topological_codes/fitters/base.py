@@ -19,25 +19,25 @@ class TopologicalGraphDecoder(Generic[TQubit], metaclass=ABCMeta):
     def _make_syndrome_graph(self) -> None:
         pass
 
-    @abstractmethod
-    def correct_readout(
-        self,
-        syndromes: Union[str, Dict[str, List[TQubit]]],
-        logical_qubit_value: Optional[int] = None,
-        logical_readout_type: str = "Z",
-    ) -> int:
-        pass
+    # @abstractmethod
+    # def correct_readout(
+    #     self,
+    #     syndromes: Union[str, Dict[str, List[TQubit]]],
+    #     logical_qubit_value: Optional[int] = None,
+    #     logical_readout_type: str = "Z",
+    # ) -> int:
+    #     pass
 
-    @abstractmethod
-    def _convert_string_to_nodes(
-        self, readout_string: str
-    ) -> Tuple[int, Dict[str, List[TQubit]]]:
-        pass
+    # @abstractmethod
+    # def _convert_string_to_nodes(
+    #     self, readout_string: str
+    # ) -> Tuple[int, Dict[str, List[TQubit]]]:
+    #     pass
 
     @abstractmethod
     def _make_error_graph(
         self, nodes: List[TQubit], syndrome_graph_key: str, err_prob: Optional[int]
-    ) -> nx.Graph:
+    ) -> Dict[str, nx.Graph]:
         pass
 
     # @abstractmethod
